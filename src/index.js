@@ -2,7 +2,11 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.scss';
 import App from './containers/App';
+import 'bootstrap/dist/css/bootstrap.css'
 import * as serviceWorker from './serviceWorker';
+import axios from 'axios'
+
+axios.defaults.baseURL = 'https://rawg-video-games-database.p.rapidapi.com'
 
 ReactDOM.render(
   <React.StrictMode>
