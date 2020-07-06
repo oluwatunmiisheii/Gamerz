@@ -1,0 +1,29 @@
+.navbar-dark {
+  background: #000;
+}
+
+.navbar {
+  height: 120px;
+}
+
+.navbar-dark .navbar-nav .nav-link {
+  color: #fff !important;
+  font-size: 17px;
+}
+
+.logo__container {
+  background-color: #766df4;
+  height: 40px;
+  width: 40px;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+}
+
+.btn-primary {
+  background-color: #766df4 !important;
+  border-color: #766df4 !important;
+  box-shadow: none !important;
+}

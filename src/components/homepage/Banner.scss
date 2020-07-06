@@ -1,0 +1,14 @@
+.page-banner {
+  background: #000;
+  height: calc(100vh - 120px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.page-banner p.text-grey {
+  color: rgba(255, 255, 255, 0.5);
+  line-height: 1.7;
+  font-size: 18px;
+  margin-top: 20px;
+}

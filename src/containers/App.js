@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
-import logo from '../logo.svg';
+import { Route, Switch, Redirect } from 'react-router-dom'
+import NavBar from '../components/common/Navigation'
+import Homepage from './Home'
+import NotFound from './NotFound'
 import './App.scss';
 import axios from '../axios'
 
@@ -12,23 +15,19 @@ class App extends Component {
   }
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-        </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-        </a>
-        </header>
-      </div>
-    );
+      <React.Fragment>
+        <NavBar />
+        <Switch>
+          {/* <Route path="/movies" component={Movies}></Route>
+          <Route path="/login" component={LoginForm}></Route>
+          <Route path="/customers" component={Customers}></Route>
+          <Route path="/rentals" component={Rentals}></Route> */}
+          <Route path="not-found" component={NotFound}></Route>
+          <Route path="/" exact component={Homepage} />
+          <Redirect to="/not-found" />
+        </Switch>
+      </React.Fragment>
+    )
   }
 }
 

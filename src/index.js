@@ -1,17 +1,19 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import 'bootstrap/dist/css/bootstrap.css'
 import './index.scss';
 import App from './containers/App';
-import 'bootstrap/dist/css/bootstrap.css'
 import * as serviceWorker from './serviceWorker';
+import { BrowserRouter } from 'react-router-dom'
 import axios from 'axios'
+import './assets/fonts/BigSpace.ttf'
 
 axios.defaults.baseURL = 'https://rawg-video-games-database.p.rapidapi.com'
 
 ReactDOM.render(
-  <React.StrictMode>
+  <BrowserRouter>
     <App />
-  </React.StrictMode>,
+  </BrowserRouter>,
   document.getElementById('root')
 );
 
