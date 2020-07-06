@@ -10,6 +10,7 @@ import NotFound from './NotFound'
 import Platforms from './Platforms'
 import Gernes from './Gernes'
 import Developers from './Developers'
+import Tags from './Tags'
 
 class App extends Component {
 
@@ -23,7 +24,7 @@ class App extends Component {
       <React.Fragment>
         <NavBar />
         <Switch>
-          {/* <Route path="/movies" component={Movies}></Route> */}
+          <Route path="/tags" component={Tags}></Route>
           <Route path="/developers" component={Developers}></Route>
           <Route path="/gernes" component={Gernes}></Route>
           <Route path="not-found" component={NotFound}></Route>

@@ -25,18 +25,10 @@ const NavBar = () => {
         <div className="collapse navbar-collapse d-flex justify-content-between" id="navbarNavDropdown">
           <div></div>
           <ul className="navbar-nav">
-            <li className="nav-item">
-              <NavLink className="nav-link" to="/platforms">Platforms</NavLink>
-            </li>
-            <li className="nav-item">
-              <NavLink className="nav-link" to="/gernes">Gernes</NavLink>
-            </li>
-            <li className="nav-item">
-              <NavLink className="nav-link" to="/developers">Developers</NavLink>
-            </li>
-            <li className="nav-item">
-              <NavLink className="nav-link" to="/tags">Tags</NavLink>
-            </li>
+            <li className="nav-item"><NavLink className="nav-link" to="/platforms">Platforms</NavLink></li>
+            <li className="nav-item"><NavLink className="nav-link" to="/gernes">Gernes</NavLink></li>
+            <li className="nav-item"><NavLink className="nav-link" to="/developers">Developers</NavLink></li>
+            <li className="nav-item"><NavLink className="nav-link" to="/tags">Tags</NavLink></li>
           </ul>
           <div className="d-flex justify-content-center align-items-center">
             <Input
