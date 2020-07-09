@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 const Cards = ({ data }) => {
   const games = data.games.slice(0, 4)
   return (
-    <Link to="/" className="card bg-dark text-white card-translate">
+    <div className="card bg-dark text-white card-translate">
       <img src={data['image_background']} alt={data['name']} className="card-img" />
       <div className="card-img-overlay d-flex justify-content-center flex-column">
         <h4 className="card-title mb-4">{data['name']}</h4>
@@ -18,7 +18,7 @@ const Cards = ({ data }) => {
           ))}
         </ul>
       </div>
-    </Link>
+    </div>
   );
 }
 
