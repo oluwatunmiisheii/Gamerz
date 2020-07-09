@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Route, Switch, Redirect } from 'react-router-dom'
 import NavBar from '../components/common/Navigation'
 import './App.scss';
-import axios from '../axios'
+
 
 // routes
 import Homepage from './Home'
@@ -13,12 +13,6 @@ import Developers from './Developers'
 import Tags from './Tags'
 
 class App extends Component {
-
-  componentDidMount() {
-    axios.get('/games').then(res => {
-      console.log(res);
-    })
-  }
   render() {
     return (
       <React.Fragment>

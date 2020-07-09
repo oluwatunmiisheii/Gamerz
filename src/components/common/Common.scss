@@ -27,3 +27,55 @@
   border-color: #766df4 !important;
   box-shadow: none !important;
 }
+
+.card-img,
+.card-img-top,
+.card-img-bottom {
+  height: 300px;
+  object-fit: cover;
+}
+
+.card-img-overlay {
+  background: rgba(20, 20, 20, 0.6);
+}
+
+.list-group-item {
+  position: relative;
+  display: block;
+  padding: 0.75rem 0;
+  background-color: transparent;
+  border: 1px dotted rgba($color: #fff, $alpha: 0.8);
+}
+
+.list-group-item span.list-left {
+  font-size: 14px;
+}
+
+.list-group-item span.list-right {
+  font-size: 14px;
+}
+
+
+.list-group-item span.list-link {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 80%;
+}
+
+.list-group-item span.list-link a {
+  color: #fff !important;
+  border-bottom: 1px dotted rgba($color: #fff, $alpha: 0.7) !important;
+}
+
+.text-muted {
+  color: rgba($color: #fff, $alpha: 0.7) !important;
+}
+
+.card-translate {
+  transition: .4s all ease-in-out;
+
+  &:hover {
+    transform: translateY(-10px);
+  }
+}
