@@ -11,6 +11,7 @@ import Platforms from './Platforms'
 import Gernes from './Gernes'
 import Developers from './Developers'
 import Tags from './Tags'
+import Single from './SingleGerne'
 
 class App extends Component {
   render() {
@@ -20,9 +21,10 @@ class App extends Component {
         <Switch>
           <Route path="/tags" component={Tags}></Route>
           <Route path="/developers" component={Developers}></Route>
+          <Route path="/gernes/:id" component={Single}></Route>
           <Route path="/gernes" component={Gernes}></Route>
-          <Route path="not-found" component={NotFound}></Route>
           <Route path="/platforms" component={Platforms}></Route>
+          <Route path="/not-found" component={NotFound}></Route>
           <Route path="/" exact component={Homepage} />
           <Redirect to="/not-found" />
         </Switch>

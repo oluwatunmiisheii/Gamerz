@@ -32,12 +32,10 @@ class Developers extends Component {
   }
 
   componentDidMount() {
-    const pathName = this.props.history.location.pathname.replace('/', '')
+    const pathName = this.props.match.url.replace('/', '')
     this.setState({ pathName })
     axios.get('/developers').then(res => {
       const developers = res.data.results
-      console.log(developers);
-
       const chunk = 12
       if (developers.length > chunk) {
         const stateDevelopers = developers.slice(0, chunk);

@@ -16,6 +16,9 @@ class Gernes extends Component {
     enter: true,
     exit: true,
   };
+  goToSinglePage = (routeParam) => {
+    this.props.history.push(`/gernes/${routeParam}`)
+  }
   loadMore = () => {
     let paginatedGenres = [...this.state.paginatedGenres]
     let genres = [...this.state.genres]
@@ -30,7 +33,7 @@ class Gernes extends Component {
     }
   }
   componentDidMount() {
-    const pathName = this.props.history.location.pathname.replace('/', '')
+    const pathName = this.props.match.url.replace('/', '')
     this.setState({ pathName })
     axios.get('/genres').then(res => {
       const genres = res.data.results
@@ -46,19 +49,19 @@ class Gernes extends Component {
     })
   }
   render() {
-    const { genres, paginatedGenres } = this.state
+    const { genres, paginatedGenres, pathName } = this.state
     return (
       <section className="platform-wrapper section-padding">
         <div className="container">
           <div className="row">
             <div className="col-md-12">
-              <h1 className="text-white text-capitalize pb-5">{this.state.pathName}</h1>
+              <h1 className="text-white text-capitalize pb-5">{pathName}</h1>
             </div>
             {/* <div className="row"> */}
             {/* <TransitionGroup {...this.groupProps}> */}
             {genres.map(genre => (
               <div className="col-md-3 mb-4" key={genre.id}>
-                <Cards data={genre} />
+                <Cards data={genre} goToSinglePage={this.goToSinglePage} />
               </div>
             ))}
             {/* </TransitionGroup> */}

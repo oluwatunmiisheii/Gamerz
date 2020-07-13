@@ -31,7 +31,7 @@ class Platfornms extends Component {
   }
 
   componentDidMount() {
-    const pathName = this.props.history.location.pathname.replace('/', '')
+    const pathName = this.props.match.url.replace('/', '')
     this.setState({ pathName })
     axios.get('/platforms').then(res => {
       const platforms = res.data.results

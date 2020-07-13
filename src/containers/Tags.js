@@ -32,7 +32,7 @@ class Tags extends Component {
   }
 
   componentDidMount() {
-    const pathName = this.props.history.location.pathname.replace('/', '')
+    const pathName = this.props.match.url.replace('/', '')
     this.setState({ pathName })
     axios.get('/tags').then(res => {
       const tags = res.data.results
