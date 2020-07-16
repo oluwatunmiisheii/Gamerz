@@ -1,15 +1,15 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 import Cards from '../../components/common/Cards'
 import axios from '../../axios'
 import LoadMoreBtn from '../../components/common/LoadMoreBtn'
-// import TransitionGroup from 'react-transition-group/TransitionGroup';
-// import Fade from 'react-reveal/Fade';
+import Preloader from '../../components/common/Preloader'
 
 class Tags extends Component {
   state = {
     pathName: '',
     tags: [],
-    paginatedTags: []
+    paginatedTags: [],
+    isLoading: true
   }
   groupProps = {
     appear: false,
@@ -45,33 +45,41 @@ class Tags extends Component {
       else {
         this.setState({ tags })
       }
+    }).catch(err => {
+      console.log(err);
+    }).finally(() => {
+      this.setState({ isLoading: false })
     })
   }
   render() {
-    const { tags, paginatedTags } = this.state
+    const { tags, paginatedTags, pathName, isLoading } = this.state
     return (
       <section className="platform-wrapper section-padding">
         <div className="container">
-          <div className="row">
-            <div className="col-md-12">
-              <h1 className="text-white text-capitalize pb-5">{this.state.pathName}</h1>
-            </div>
-            {/* <div className="row"> */}
-            {/* <TransitionGroup {...this.groupProps}> */}
-            {tags.map(tag => (
-              <div className="col-md-3 mb-4" key={tag.id}>
-                <Cards data={tag} />
+          {isLoading ? <Preloader /> :
+            <Fragment>
+              <div className="row">
+                <div className="col-md-12">
+                  <h1 className="text-white text-capitalize pb-5">{pathName}</h1>
+                </div>
+                {/* <div className="row"> */}
+                {/* <TransitionGroup {...this.groupProps}> */}
+                {tags.map(tag => (
+                  <div className="col-md-3 mb-4" key={tag.id}>
+                    <Cards data={tag} />
+                  </div>
+                ))}
+                {/* </TransitionGroup> */}
+                {/* </div> */}
               </div>
-            ))}
-            {/* </TransitionGroup> */}
-            {/* </div> */}
-          </div>
-          {paginatedTags.length > 0 &&
-            <div className="row">
-              <div className="col-md-4 mx-auto mt-3">
-                <LoadMoreBtn btnText={'Load More'} loadMore={this.loadMore} />
-              </div>
-            </div>
+              {paginatedTags.length > 0 &&
+                <div className="row">
+                  <div className="col-md-4 mx-auto mt-3">
+                    <LoadMoreBtn btnText={'Load More'} loadMore={this.loadMore} />
+                  </div>
+                </div>
+              }
+            </Fragment>
           }
         </div>
       </section>
