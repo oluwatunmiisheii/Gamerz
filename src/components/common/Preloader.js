@@ -2,12 +2,12 @@ import React from 'react';
 
 const PreLoader = () => {
   return (
-    <div class="container">
-      <div class="row">
-        <div class="col-12">
-          <div class="spinner">
-            <div class="cube1"></div>
-            <div class="cube2"></div>
+    <div className="container">
+      <div className="row">
+        <div className="col-12">
+          <div className="spinner">
+            <div className="cube1"></div>
+            <div className="cube2"></div>
           </div>
         </div>
       </div>
