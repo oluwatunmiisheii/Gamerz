@@ -3,8 +3,6 @@ import Cards from '../../components/common/Cards'
 import axios from '../../axios'
 import LoadMoreBtn from '../../components/common/LoadMoreBtn'
 import Preloader from '../../components/common/Preloader'
-// import TransitionGroup from 'react-transition-group/TransitionGroup';
-// import Fade from 'react-reveal/Fade';
 
 class Developers extends Component {
   state = {
@@ -13,11 +11,6 @@ class Developers extends Component {
     paginatedDevelopers: [],
     isLoading: true
   }
-  groupProps = {
-    appear: false,
-    enter: true,
-    exit: true,
-  };
 
   loadMore = () => {
     let paginatedDevelopers = [...this.state.paginatedDevelopers]

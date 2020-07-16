@@ -1,21 +1,17 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 import Cards from '../../components/common/Cards'
 import axios from '../../axios'
 import LoadMoreBtn from '../../components/common/LoadMoreBtn'
-// import TransitionGroup from 'react-transition-group/TransitionGroup';
-// import Fade from 'react-reveal/Fade';
+import Preloader from '../../components/common/Preloader'
 
 class Gernes extends Component {
   state = {
     pathName: '',
     genres: [],
-    paginatedGenres: []
+    paginatedGenres: [],
+    isLoading: true
   }
-  groupProps = {
-    appear: false,
-    enter: true,
-    exit: true,
-  };
+
   goToSinglePage = (routeParam) => {
     this.props.history.push(`/gernes/${routeParam}`)
   }
@@ -46,33 +42,37 @@ class Gernes extends Component {
       else {
         this.setState({ genres })
       }
+    }).catch(err => {
+      console.log(err);
+    }).finally(() => {
+      this.setState({ isLoading: false })
     })
   }
   render() {
-    const { genres, paginatedGenres, pathName } = this.state
+    const { genres, paginatedGenres, pathName, isLoading } = this.state
     return (
       <section className="platform-wrapper section-padding">
         <div className="container">
-          <div className="row">
-            <div className="col-md-12">
-              <h1 className="text-white text-capitalize pb-5">{pathName}</h1>
-            </div>
-            {/* <div className="row"> */}
-            {/* <TransitionGroup {...this.groupProps}> */}
-            {genres.map(genre => (
-              <div className="col-md-3 mb-4" key={genre.id}>
-                <Cards data={genre} goToSinglePage={this.goToSinglePage} />
+          {isLoading ? <Preloader /> :
+            <Fragment>
+              <div className="row">
+                <div className="col-md-12">
+                  <h1 className="text-white text-capitalize pb-5">{pathName}</h1>
+                </div>
+                {genres.map(genre => (
+                  <div className="col-md-3 mb-4" key={genre.id}>
+                    <Cards data={genre} goToSinglePage={this.goToSinglePage} />
+                  </div>
+                ))}
               </div>
-            ))}
-            {/* </TransitionGroup> */}
-            {/* </div> */}
-          </div>
-          {paginatedGenres.length > 0 &&
-            <div className="row">
-              <div className="col-md-4 mx-auto mt-3">
-                <LoadMoreBtn btnText={'Load More'} loadMore={this.loadMore} />
-              </div>
-            </div>
+              {paginatedGenres.length > 0 &&
+                <div className="row">
+                  <div className="col-md-4 mx-auto mt-3">
+                    <LoadMoreBtn btnText={'Load More'} loadMore={this.loadMore} />
+                  </div>
+                </div>
+              }
+            </Fragment>
           }
         </div>
       </section>
