@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react';
 import ReactHtmlParser from 'react-html-parser';
 import { Link } from 'react-router-dom'
 import { useParams } from "react-router-dom";
-import Logo from '../assets/images/appIcon.png'
-import axios from '../axios'
+import Logo from '../../assets/images/appIcon.png'
+import axios from '../../axios'
 
 const SingleGerne = () => {
   const [data, setData] = useState({ data: {} });

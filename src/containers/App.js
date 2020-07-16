@@ -7,11 +7,11 @@ import './App.scss';
 // routes
 import Homepage from './Home'
 import NotFound from './NotFound'
-import Platforms from './Platforms'
-import Gernes from './Gernes'
-import Developers from './Developers'
-import Tags from './Tags'
-import Single from './SingleGerne'
+import Platforms from './platforms/Platforms'
+import Gernes from './gernes/Gernes'
+import Developers from './developers/Developers'
+import Tags from './tags/Tags'
+import Single from './gernes/SingleGerne'
 
 class App extends Component {
   render() {

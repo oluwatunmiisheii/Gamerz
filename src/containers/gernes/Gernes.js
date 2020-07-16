@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
-import Cards from '../components/common/Cards'
-import axios from '../axios'
-import LoadMoreBtn from '../components/common/LoadMoreBtn'
+import Cards from '../../components/common/Cards'
+import axios from '../../axios'
+import LoadMoreBtn from '../../components/common/LoadMoreBtn'
 // import TransitionGroup from 'react-transition-group/TransitionGroup';
 // import Fade from 'react-reveal/Fade';
 
