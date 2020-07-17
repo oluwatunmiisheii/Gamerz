@@ -11,11 +11,7 @@ class Platfornms extends Component {
     paginatedPlatforms: [],
     isLoading: true
   }
-  groupProps = {
-    appear: false,
-    enter: true,
-    exit: true,
-  };
+
   loadMore = () => {
     let paginatedPlatforms = [...this.state.paginatedPlatforms]
     let platforms = [...this.state.platforms]

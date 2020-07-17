@@ -4,9 +4,11 @@ import { Link } from 'react-router-dom'
 import { useParams } from "react-router-dom";
 import Logo from '../../assets/images/appIcon.png'
 import axios from '../../axios'
+import Preloader from '../../components/common/Preloader'
 
 const SingleGerne = () => {
   const [data, setData] = useState({ data: {} });
+  const [isLoading, setIsLoading] = useState(true)
   const { id } = useParams();
 
   useEffect(() => {
@@ -18,6 +20,8 @@ const SingleGerne = () => {
         setData(result.data);
       } catch (error) {
         console.log(error);
+      } finally {
+        setIsLoading(false)
       }
     };
     fetchData();
@@ -34,30 +38,35 @@ const SingleGerne = () => {
   return (
     <section className="platform-wrapper section-padding">
       <div className='container'>
-        <div className="row justify-content-end mb-5">
-          <div className="col-md-12 offset-md-1 text-right">
-            <Link to='/gernes' className="btn btn-outline-light badge-pill">Back</Link>
-          </div>
-        </div>
-        <div className="row justify-content-between">
-          <div className="col-md-5 order-2">
-            <div style={bgImg} />
-          </div>
-          <div className="col-md-6 py-3">
-            <h1 className="text-white text-capitalize pb-3">{data['name']}</h1>
-            <div className="gerne-description">{ReactHtmlParser(description)}</div>
-            <div className="border-bottom my-3"></div>
-            <div className="d-flex align-items-center justify-content-between">
-              <div className="d-flex align-items-center">
-                <div className="icon-container">
-                  <img src={Logo} alt="" height="30" width="30" />
-                </div>
-                <p className="pl-2 mb-0">Games Count</p>
+        {isLoading ? <Preloader /> :
+
+          <React.Fragment>
+            <div className="row justify-content-end mb-5">
+              <div className="col-md-12 offset-md-1 text-right">
+                <Link to='/gernes' className="btn btn-outline-light badge-pill">Back</Link>
               </div>
-              <p className="mb-0">{data['games_count']}</p>
             </div>
-          </div>
-        </div>
+            <div className="row justify-content-between">
+              <div className="col-md-5 order-2">
+                <div style={bgImg} />
+              </div>
+              <div className="col-md-6 py-3">
+                <h1 className="text-white text-capitalize pb-3">{data['name']}</h1>
+                <div className="gerne-description">{ReactHtmlParser(description)}</div>
+                <div className="border-bottom my-3"></div>
+                <div className="d-flex align-items-center justify-content-between">
+                  <div className="d-flex align-items-center">
+                    <div className="icon-container">
+                      <img src={Logo} alt="" height="30" width="30" />
+                    </div>
+                    <p className="pl-2 mb-0">Games Count</p>
+                  </div>
+                  <p className="mb-0">{data['games_count']}</p>
+                </div>
+              </div>
+            </div>
+          </React.Fragment>
+        }
       </div>
     </section>
   );
